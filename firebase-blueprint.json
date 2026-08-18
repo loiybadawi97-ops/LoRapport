@@ -1,0 +1,111 @@
+{
+  "entities": {
+    "User": {
+      "title": "User",
+      "description": "A user profile storing their progress and stats.",
+      "type": "object",
+      "properties": {
+        "uid": {
+          "type": "string",
+          "description": "The user's unique ID."
+        },
+        "displayName": {
+          "type": "string",
+          "description": "The user's display name."
+        },
+        "email": {
+          "type": "string",
+          "description": "The user's email."
+        },
+        "photoURL": {
+          "type": "string",
+          "description": "The user's profile picture URL."
+        },
+        "xp": {
+          "type": "number",
+          "description": "The user's total experience points."
+        },
+        "level": {
+          "type": "number",
+          "description": "The user's current level."
+        },
+        "completedChallenges": {
+          "type": "array",
+          "items": {
+            "type": "number"
+          },
+          "description": "List of completed challenge IDs."
+        },
+        "streak": {
+          "type": "number",
+          "description": "The user's current daily streak."
+        },
+        "lastExerciseDate": {
+          "type": "string",
+          "description": "The date the user last completed an exercise (YYYY-MM-DD)."
+        },
+        "isPro": {
+          "type": "boolean",
+          "description": "Whether the user has a Pro subscription."
+        },
+        "dailyChats": {
+          "type": "number",
+          "description": "Number of practice chats completed today."
+        },
+        "dailyExercises": {
+          "type": "number",
+          "description": "Number of voice exercises completed today."
+        },
+        "dailyChallenges": {
+          "type": "number",
+          "description": "Number of speaking challenges completed today."
+        },
+        "lastActiveDate": {
+          "type": "string",
+          "description": "The date the user was last active (YYYY-MM-DD)."
+        },
+        "createdAt": {
+          "type": "string",
+          "format": "date-time",
+          "description": "When the user was created."
+        }
+      },
+      "required": ["uid", "xp", "level"]
+    },
+    "Session": {
+      "title": "Session",
+      "description": "A completed practice session.",
+      "type": "object",
+      "properties": {
+        "uid": {
+          "type": "string",
+          "description": "The ID of the user who completed the session."
+        },
+        "scenarioId": {
+          "type": "string",
+          "description": "The ID of the scenario practiced."
+        },
+        "score": {
+          "type": "number",
+          "description": "The overall score achieved."
+        },
+        "createdAt": {
+          "type": "string",
+          "format": "date-time",
+          "description": "When the session was completed."
+        }
+      },
+      "required": ["uid", "scenarioId", "score", "createdAt"]
+    }
+  },
+  "firestore": {
+    "/users/{userId}": {
+      "schema": { "$ref": "#/entities/User" },
+      "description": "Stores user profiles."
+    },
+    "/sessions/{sessionId}": {
+      "schema": { "$ref": "#/entities/Session" },
+      "description": "Stores completed practice sessions."
+    }
+  }
+}

@@ -1,0 +1,5 @@
+{
+  "name": "Social Gym AI",
+  "description": "A minimalist, high-performance AI-powered app that helps users improve real-life communication skills through practice, feedback, and simulation.",
+  "requestFramePermissions": ["microphone"]
+}

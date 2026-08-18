@@ -1,0 +1,29 @@
+{
+  "project_info": {
+    "project_number": "451561236467",
+    "project_id": "social-gym-version-2",
+    "storage_bucket": "social-gym-version-2.firebasestorage.app"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:451561236467:android:3ca9ba3667f19f0c7f9486",
+        "android_client_info": {
+          "package_name": "com.react.example"
+        }
+      },
+      "oauth_client": [],
+      "api_key": [
+        {
+          "current_key": "AIzaSyCzG_ZbE1WTLHT0xm8auZgXT_XXi9SuBm8"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": []
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

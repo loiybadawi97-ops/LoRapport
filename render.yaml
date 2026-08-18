@@ -1,0 +1,39 @@
+services:
+  - type: web
+    name: social-gym-ai
+    env: node
+    plan: free
+    buildCommand: npm install && npm run build
+    startCommand: npm start
+    envVars:
+      - key: NODE_ENV
+        value: production
+      # Add these as real values in the Render dashboard (Environment tab) —
+      # never commit actual secrets into this file.
+      #
+      # Required — powers every AI feature (chat, feedback, voice analysis,
+      # library/challenge generation). See src/server/services/aiService.ts:
+      # when this is set, Claude is used for all AI calls and GEMINI_API_KEY
+      # isn't needed at all.
+      - key: ANTHROPIC_API_KEY
+        sync: false
+      # Optional fallback provider — only used if ANTHROPIC_API_KEY is unset.
+      - key: GEMINI_API_KEY
+        sync: false
+      # Required — lets the RevenueCat webhook verify incoming requests
+      # actually came from RevenueCat. Generate any long random string and
+      # paste the SAME value into RevenueCat > Project Settings >
+      # Integrations > Webhooks > "Authorization header value".
+      - key: REVENUECAT_WEBHOOK_SECRET
+        sync: false
+      # Required — Firebase Admin SDK credentials (see server.ts). Paste the
+      # ENTIRE contents of your service account JSON file (Firebase console
+      # > Project settings > Service accounts > Generate new private key) as
+      # the value of this one variable.
+      - key: FIREBASE_SERVICE_ACCOUNT_JSON
+        sync: false
+      # Set once Render assigns your service's URL (Settings tab), e.g.
+      # https://social-gym-ai.onrender.com — used for OAuth callbacks and
+      # self-referential links.
+      - key: APP_URL
+        sync: false
